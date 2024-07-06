@@ -30,7 +30,17 @@ export default function MainLayout() {
           console.log(collapsed, type);
         }}
       >
-        <div className="demo-logo-vertical" />
+        <div
+          style={{
+            color: "white",
+            height: "4rem",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <h1>Ph Uni</h1>
+        </div>
         <Menu
           theme="dark"
           mode="inline"
