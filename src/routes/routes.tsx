@@ -23,6 +23,11 @@ const router = createBrowserRouter([
     element: <App />,
     children: adminRoutes,
   },
+  {
+    path: "/faculty",
+    element: <App />,
+    children: adminRoutes,
+  },
 ]);
 
 export default router;
