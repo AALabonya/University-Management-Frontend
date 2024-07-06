@@ -47,7 +47,7 @@ export default function MainLayout() {
               minHeight: 360,
             }}
           >
-            content
+            <h1>Main layout should be </h1>
           </div>
         </Content>
         <Footer style={{ textAlign: "center" }}>
