@@ -28,6 +28,11 @@ const router = createBrowserRouter([
     element: <App />,
     children: adminRoutes,
   },
+  {
+    path: "/student",
+    element: <App />,
+    children: adminRoutes,
+  },
 ]);
 
 export default router;
