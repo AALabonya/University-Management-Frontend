@@ -6,19 +6,10 @@ import {
 } from "@ant-design/icons";
 import { createElement } from "react";
 import { Outlet } from "react-router-dom";
+import { adminSidebarItems } from "../../routes/admin.routes";
 const { Header, Content, Footer, Sider } = Layout;
 
-const items = [
-  UserOutlined,
-  VideoCameraOutlined,
-  UploadOutlined,
-  UserOutlined,
-].map((icon, index) => ({
-  key: String(index + 1),
-  icon: createElement(icon),
-  label: `nav ${index + 1}`,
-}));
-export default function MainLayout() {
+const MainLayout = () => {
   return (
     <Layout style={{ height: "100vh" }}>
       <Sider
@@ -34,19 +25,20 @@ export default function MainLayout() {
         <div
           style={{
             color: "white",
+
             height: "4rem",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
           }}
         >
-          <h1>Ph Uni</h1>
+          <h1>PH Uni</h1>
         </div>
         <Menu
           theme="dark"
           mode="inline"
           defaultSelectedKeys={["4"]}
-          items={items}
+          items={adminSidebarItems}
         />
       </Sider>
       <Layout>
@@ -58,7 +50,6 @@ export default function MainLayout() {
               minHeight: 360,
             }}
           >
-            <h1>This Main content should go here </h1>
             <Outlet />
           </div>
         </Content>
@@ -68,4 +59,6 @@ export default function MainLayout() {
       </Layout>
     </Layout>
   );
-}
+};
+
+export default MainLayout;
