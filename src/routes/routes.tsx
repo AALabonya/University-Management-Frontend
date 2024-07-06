@@ -7,6 +7,7 @@ import Registration from "../pages/Registration";
 import AdminDashboard from "../pages/admin/AdminDashboard";
 import CreateFaculty from "../pages/admin/CreateFaculty";
 import CreateAdmin from "../pages/admin/CreateAdmin";
+import CreateStudent from "../pages/admin/CreateStudent";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
       {
         path: "/createAdmin",
         element: <CreateAdmin />,
+      },
+      {
+        path: "/createStudent",
+        element: <CreateStudent />,
       },
     ],
   },
