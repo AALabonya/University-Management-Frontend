@@ -1,4 +1,4 @@
-import { Children, ReactNode } from "react";
+import { ReactNode } from "react";
 import AdminDashboard from "../pages/admin/AdminDashboard";
 import CreateAdmin from "../pages/admin/CreateAdmin";
 import CreateFaculty from "../pages/admin/CreateFaculty";
@@ -17,7 +17,7 @@ const adminPaths = [
   },
   {
     name: "User Management",
-    Children: [
+    children: [
       {
         name: "Create Admin",
         path: "create-admin",
@@ -39,11 +39,17 @@ const adminPaths = [
 
 //Programaticaly way
 
-export const adminRoutes = adminPaths.reduce((acc, item) => {
+export const adminRoutes = adminPaths.reduce((acc: TRoute[], item) => {
   if (item.path && item.element) {
     acc.push({
       path: item.path,
       element: item.element,
     });
   }
-});
+  if (item.children) {
+    item.children.forEach((child) => {
+      acc.push({ path: child.path, element: child.element });
+    });
+  }
+  return acc;
+}, []);
