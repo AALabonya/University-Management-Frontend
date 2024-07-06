@@ -35,18 +35,22 @@ const router = createBrowserRouter([
   },
   {
     path: "/admin",
-    element: <AdminDashboard />,
+    element: <App />,
     children: [
       {
-        path: "/createFaculty",
+        path: "dashboard",
+        element: <AdminDashboard />,
+      },
+      {
+        path: "createFaculty",
         element: <CreateFaculty />,
       },
       {
-        path: "/createAdmin",
+        path: "createAdmin",
         element: <CreateAdmin />,
       },
       {
-        path: "/createStudent",
+        path: "createStudent",
         element: <CreateStudent />,
       },
     ],
