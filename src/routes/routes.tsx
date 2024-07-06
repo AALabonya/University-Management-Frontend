@@ -5,6 +5,7 @@ import Contact from "../pages/Contact";
 import Login from "../pages/Login";
 import Registration from "../pages/Registration";
 import AdminDashboard from "../pages/admin/AdminDashboard";
+import CreateFaculty from "../pages/admin/CreateFaculty";
 
 const router = createBrowserRouter([
   {
@@ -35,8 +36,8 @@ const router = createBrowserRouter([
     element: <AdminDashboard />,
     children: [
       {
-        path: "/about",
-        element: <About />,
+        path: "/createFaculty",
+        element: <CreateFaculty />,
       },
       {
         path: "/contact",
