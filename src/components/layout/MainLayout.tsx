@@ -1,6 +1,12 @@
 import { Layout, Menu } from "antd";
-
+import {
+  UploadOutlined,
+  UserOutlined,
+  VideoCameraOutlined,
+} from "@ant-design/icons";
+import { createElement } from "react";
 const { Header, Content, Footer, Sider } = Layout;
+
 const items = [
   UserOutlined,
   VideoCameraOutlined,
@@ -8,7 +14,7 @@ const items = [
   UserOutlined,
 ].map((icon, index) => ({
   key: String(index + 1),
-  icon: React.createElement(icon),
+  icon: createElement(icon),
   label: `nav ${index + 1}`,
 }));
 export default function MainLayout() {
