@@ -41,6 +41,7 @@ const router = createBrowserRouter([
         path: "dashboard",
         element: <AdminDashboard />,
       },
+
       {
         path: "createFaculty",
         element: <CreateFaculty />,
