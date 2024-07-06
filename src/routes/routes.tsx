@@ -29,6 +29,20 @@ const router = createBrowserRouter([
     path: "/registration",
     element: <Registration />,
   },
+  {
+    path: "/admin",
+    element: <App />,
+    children: [
+      {
+        path: "/about",
+        element: <About />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
+      },
+    ],
+  },
 ]);
 
 export default router;

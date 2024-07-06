@@ -58,6 +58,7 @@ export default function MainLayout() {
               minHeight: 360,
             }}
           >
+            <h1>This Main content should go here </h1>
             <Outlet />
           </div>
         </Content>
