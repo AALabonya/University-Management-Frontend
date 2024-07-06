@@ -1,7 +1,16 @@
 import { Layout, Menu } from "antd";
 
 const { Header, Content, Footer, Sider } = Layout;
-
+const items = [
+  UserOutlined,
+  VideoCameraOutlined,
+  UploadOutlined,
+  UserOutlined,
+].map((icon, index) => ({
+  key: String(index + 1),
+  icon: React.createElement(icon),
+  label: `nav ${index + 1}`,
+}));
 export default function MainLayout() {
   return (
     <Layout>
