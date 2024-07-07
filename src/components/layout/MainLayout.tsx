@@ -1,14 +1,8 @@
 import { Layout } from "antd";
-import {
-  UploadOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-} from "@ant-design/icons";
-import { createElement } from "react";
 import { Outlet } from "react-router-dom";
 
 import Sidebar from "./Sidebar";
-const { Header, Content, Footer, Sider } = Layout;
+const { Header, Content, Footer } = Layout;
 
 const MainLayout = () => {
   return (
