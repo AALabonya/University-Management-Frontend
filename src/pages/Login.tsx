@@ -2,6 +2,7 @@ import { Button } from "antd";
 import { useForm } from "react-hook-form";
 import { useLoginMutation } from "../redux/feature/auth/authApi";
 import { useAppDispatch } from "../redux/hooks";
+import { setUser } from "../redux/feature/auth/authSlice";
 
 export default function Login() {
   const { register, handleSubmit } = useForm();
@@ -20,7 +21,7 @@ export default function Login() {
     };
 
     const res = await login(userInfo).unwrap();
-    dispatch();
+    dispatch(setUser({ user: {}, token: res.data.accessToken }));
   };
   return (
     <div>
