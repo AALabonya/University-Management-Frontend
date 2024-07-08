@@ -11,7 +11,12 @@ export default function Login() {
   console.log("error=>", error);
 
   const onSubmit = (data) => {
-    console.log(data);
+    const userInfo = {
+      id: data.userId,
+      password: data.password,
+    };
+
+    login(userInfo);
   };
   return (
     <div>
