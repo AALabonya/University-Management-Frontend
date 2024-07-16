@@ -1,9 +1,37 @@
 import { Menu, Layout } from "antd";
 import sidebarItemsGenerator from "../../utils/sidebarItemsGenerator";
 import { adminPaths } from "../../routes/admin.routes";
-const { Header, Content, Footer, Sider } = Layout;
+import { useAppSelector } from "../../redux/hooks";
+import { selectCurrentUser } from "../../redux/feature/auth/authSlice";
+import { facultyPaths } from "../../routes/faculty.routes";
+import { studentPaths } from "../../routes/student.routes";
+const { Sider } = Layout;
 
+const userRole = {
+  ADMIN: "admin",
+  FACULTY: "faculty",
+  STUDENT: "student",
+};
 export default function Sidebar() {
+  const user = useAppSelector(selectCurrentUser);
+
+  let sidebarItems;
+
+  switch (user!.role) {
+    case userRole.ADMIN:
+      sidebarItems = sidebarItemsGenerator(adminPaths, userRole.ADMIN);
+      break;
+    case userRole.FACULTY:
+      sidebarItems = sidebarItemsGenerator(facultyPaths, userRole.FACULTY);
+      break;
+    case userRole.STUDENT:
+      sidebarItems = sidebarItemsGenerator(studentPaths, userRole.STUDENT);
+      break;
+
+    default:
+      break;
+  }
+
   return (
     <Sider
       breakpoint="lg"
@@ -31,7 +59,7 @@ export default function Sidebar() {
         theme="dark"
         mode="inline"
         defaultSelectedKeys={["4"]}
-        items={sidebarItemsGenerator(adminPaths, "admin")}
+        items={sidebarItem}
       />
     </Sider>
   );
