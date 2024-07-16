@@ -19,7 +19,7 @@ export default function Login() {
   console.log("error=>", error);
 
   const onSubmit = async (data) => {
-    toast.loading("Logging in Successfully");
+    const toastId = toast.loading("Logging in Successfully");
     try {
       const userInfo = {
         id: data.userId,
@@ -30,7 +30,8 @@ export default function Login() {
       const user = verifyToken(res.data.accessToken);
 
       dispatch(setUser({ user: user, token: res.data.accessToken }));
-      navigate(`/${user.role}/dashborad`);
+      toast.success("Logged in", { id: toastId });
+      navigate(`/${user.role}/dashboard`);
     } catch (error) {
       toast.error("Something went wrong");
     }
