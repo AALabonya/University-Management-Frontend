@@ -1,5 +1,5 @@
 import { Button, Layout } from "antd";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
 import Sidebar from "./Sidebar";
 import { useAppDispatch } from "../../redux/hooks";
@@ -7,8 +7,8 @@ import { logout } from "../../redux/feature/auth/authSlice";
 const { Header, Content } = Layout;
 
 const MainLayout = () => {
-  const navigate = useNavigate();
   const dispatch = useAppDispatch();
+
   const handleLogout = () => {
     dispatch(logout());
   };

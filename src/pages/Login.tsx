@@ -4,8 +4,10 @@ import { useLoginMutation } from "../redux/feature/auth/authApi";
 import { useAppDispatch } from "../redux/hooks";
 import { setUser } from "../redux/feature/auth/authSlice";
 import { verifyToken } from "../utils/verifyToken";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
+  const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
 
   const dispatch = useAppDispatch();
@@ -25,6 +27,7 @@ export default function Login() {
     const user = verifyToken(res.data.accessToken);
 
     dispatch(setUser({ user: user, token: res.data.accessToken }));
+    navigate(`/${user.role}/dashborad`);
   };
   return (
     <div>
