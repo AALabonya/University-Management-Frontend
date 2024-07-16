@@ -7,7 +7,7 @@ export type TUser = {
   exp: number;
 };
 type TAuthState = {
-  user: null | object;
+  user: null | TUser;
   token: null | string;
 };
 
