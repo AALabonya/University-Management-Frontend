@@ -5,6 +5,7 @@ import { useAppDispatch } from "../redux/hooks";
 import { setUser } from "../redux/feature/auth/authSlice";
 import { verifyToken } from "../utils/verifyToken";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -18,6 +19,7 @@ export default function Login() {
   console.log("error=>", error);
 
   const onSubmit = async (data) => {
+    toast.loading("Logging in Successfully");
     const userInfo = {
       id: data.userId,
       password: data.password,
