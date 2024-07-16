@@ -20,16 +20,20 @@ export default function Login() {
 
   const onSubmit = async (data) => {
     toast.loading("Logging in Successfully");
-    const userInfo = {
-      id: data.userId,
-      password: data.password,
-    };
+    try {
+      const userInfo = {
+        id: data.userId,
+        password: data.password,
+      };
 
-    const res = await login(userInfo).unwrap();
-    const user = verifyToken(res.data.accessToken);
+      const res = await login(userInfo).unwrap();
+      const user = verifyToken(res.data.accessToken);
 
-    dispatch(setUser({ user: user, token: res.data.accessToken }));
-    navigate(`/${user.role}/dashborad`);
+      dispatch(setUser({ user: user, token: res.data.accessToken }));
+      navigate(`/${user.role}/dashborad`);
+    } catch (error) {
+      toast.error("Something went wrong");
+    }
   };
   return (
     <div>
