@@ -2,14 +2,13 @@ import { baseApi } from "../../api/baseApi";
 
 const academicSemesterApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    login: builder.mutation({
-      query: (userInfo) => ({
-        url: "/auth/login",
+    getAllSemester: builder.query({
+      query: () => ({
+        url: "/academic-semesters",
         method: "POST",
-        body: userInfo,
       }),
     }),
   }),
 });
 
-export const { useLoginMutation } = academicSemesterApi;
+export const { useGetAllSemesterQuery } = academicSemesterApi;
