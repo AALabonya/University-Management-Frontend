@@ -59,7 +59,7 @@ export default function Sidebar() {
         theme="dark"
         mode="inline"
         defaultSelectedKeys={["4"]}
-        items={sidebarItem}
+        items={sidebarItems}
       />
     </Sider>
   );
