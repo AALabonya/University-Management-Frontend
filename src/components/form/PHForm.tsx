@@ -1,3 +1,4 @@
+import { ReactNode } from "react";
 import {
   FieldValues,
   FormProvider,
@@ -11,7 +12,8 @@ type TFormConfig = {
 
 type TFormProps = {
   onSubmit: SubmitHandler<FieldValues>;
-};
+  children: ReactNode;
+} & TFormConfig;
 export default function PHForm({
   onSubmit,
   children,
