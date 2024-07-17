@@ -2,6 +2,7 @@ import { FieldValues, SubmitHandler } from "react-hook-form";
 import PHForm from "../../../components/form/PHForm";
 import { Button, Col, Flex } from "antd";
 import PHSelect from "../../../components/form/PHSelect";
+import { zodResolver } from "@hookform/resolvers/zod";
 const nameOptions = [
   {
     value: "01",
@@ -38,7 +39,10 @@ export default function CreateAcademicSemester() {
   return (
     <Flex justify="center" align="center">
       <Col span={6}>
-        <PHForm onSubmit={onSubmit}>
+        <PHForm
+          onSubmit={onSubmit}
+          resolver={zodResolver(academicSemesterSchema)}
+        >
           <PHSelect label="Name" name="name" options={nameOptions} />
           <PHSelect label="Year" name="year" options={yearOptions} />
           <PHSelect
