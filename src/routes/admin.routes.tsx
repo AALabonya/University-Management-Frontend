@@ -15,7 +15,7 @@ export const adminPaths = [
     name: "Academic Management",
     children: [
       {
-        name: "Academic Semester",
+        name: "Create Academic Semester",
         path: "create-academic-semester",
         element: <CreateAcademicSemester />,
       },
