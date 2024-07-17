@@ -19,7 +19,7 @@ export default function PHSelect({ name, label, options }: TPHSelectProps) {
             options={options}
             size="large"
           />
-          {error && <small>{error?.message}</small>}
+          {error && <small style={{ color: "red" }}>{error?.message}</small>}
         </Form.Item>
       )}
     />

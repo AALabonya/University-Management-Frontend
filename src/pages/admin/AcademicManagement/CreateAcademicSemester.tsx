@@ -3,6 +3,7 @@ import PHForm from "../../../components/form/PHForm";
 import { Button, Col, Flex } from "antd";
 import PHSelect from "../../../components/form/PHSelect";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 const nameOptions = [
   {
     value: "01",
@@ -35,7 +36,9 @@ export default function CreateAcademicSemester() {
     };
     console.log(semesterData);
   };
-
+  const academicSemesterSchema = z.object({
+    name: z.string({ required_error: "This field is required" }),
+  });
   return (
     <Flex justify="center" align="center">
       <Col span={6}>
