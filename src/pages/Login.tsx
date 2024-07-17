@@ -1,15 +1,15 @@
-import { Button } from "antd";
-import { useForm } from "react-hook-form";
 import { useLoginMutation } from "../redux/feature/auth/authApi";
 import { useAppDispatch } from "../redux/hooks";
 import { setUser, TUser } from "../redux/feature/auth/authSlice";
 import { verifyToken } from "../utils/verifyToken";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+import PHForm from "../components/form/PHForm";
+import PHInput from "../components/form/PHInput";
+import { Button } from "antd";
 
 export default function Login() {
   const navigate = useNavigate();
-  const { register, handleSubmit } = useForm();
 
   const dispatch = useAppDispatch();
 
@@ -38,17 +38,11 @@ export default function Login() {
   };
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <label htmlFor="id">ID: </label>
-          <input type="text" id="id" {...register("userId")} />
-        </div>
-        <div>
-          <label htmlFor="password">Password: </label>
-          <input type="text" id="password" {...register("password")} />
-        </div>
+      <PHForm onSubmit={onSubmit} defaultValues={defaultValues}>
+        <PHInput type="text" name="userId" label="ID:" />
+        <PHInput type="text" name="password" label="Password" />
         <Button htmlType="submit">Login</Button>
-      </form>
+      </PHForm>
     </div>
   );
 }
