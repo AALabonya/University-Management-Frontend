@@ -8,7 +8,7 @@ export default function CreateAcademicSemester() {
     console.log(data);
   };
   return (
-    <Flex justify="center">
+    <Flex justify="center" align="center">
       <Col span={6}>
         <PHForm onSubmit={onSubmit}>
           <PHInput type="text" name="name" label="name" />
