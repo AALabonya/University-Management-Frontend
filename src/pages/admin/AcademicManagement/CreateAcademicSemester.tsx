@@ -27,6 +27,13 @@ export default function CreateAcademicSemester() {
       <Col span={6}>
         <PHForm onSubmit={onSubmit}>
           <PHSelect label="Name" name="name" options={nameOptions} />
+          <PHSelect label="Year" name="name" options={nameOptions} />
+          <PHSelect
+            label="Start Month"
+            name="startMonth"
+            options={nameOptions}
+          />
+          <PHSelect label="End Month" name="endMonth" options={nameOptions} />
           <Button htmlType="submit">Submit</Button>
         </PHForm>
       </Col>
