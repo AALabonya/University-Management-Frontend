@@ -7,11 +7,26 @@ export default function CreateAcademicSemester() {
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     console.log(data);
   };
+
+  const nameOptions = [
+    {
+      value: " Autumn",
+      label: "Autumn",
+    },
+    {
+      value: "Summer",
+      label: "Summer",
+    },
+    {
+      value: "Fall",
+      label: "Fall",
+    },
+  ];
   return (
     <Flex justify="center" align="center">
       <Col span={6}>
         <PHForm onSubmit={onSubmit}>
-          <PHSelect label="name" />
+          <PHSelect label="Name" name="name" options={nameOptions} />
           <Button htmlType="submit">Submit</Button>
         </PHForm>
       </Col>
