@@ -5,6 +5,7 @@ import PHSelect from "../../../components/form/PHSelect";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 import { academicSemesterSchema } from "../../../schemas/academicManagement.schema";
+import { monthOptions } from "../../../constants/global";
 const nameOptions = [
   {
     value: "01",
@@ -34,6 +35,8 @@ export default function CreateAcademicSemester() {
       name,
       code: data.name,
       year: data.year,
+      startMonth: data.startMonth,
+      endMonth: data.endMonth,
     };
     console.log(semesterData);
   };
@@ -50,9 +53,9 @@ export default function CreateAcademicSemester() {
           <PHSelect
             label="Start Month"
             name="startMonth"
-            options={nameOptions}
+            options={monthOptions}
           />
-          <PHSelect label="End Month" name="endMonth" options={nameOptions} />
+          <PHSelect label="End Month" name="endMonth" options={monthOptions} />
           <Button htmlType="submit">Submit</Button>
         </PHForm>
       </Col>
