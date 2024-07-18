@@ -9,11 +9,13 @@ const academicManagementSemester = baseApi.injectEndpoints({
       }),
     }),
     academicSemester: builder.mutation({
-      query: () => ({
+      query: (data) => ({
         url: "/academic-semesters/create-academic-semester",
         method: "POST",
+        body: data,
       }),
     }),
   }),
 });
-export const { useGetAllSemesterQuery } = academicManagementSemester;
+export const { useGetAllSemesterQuery, useAcademicSemesterMutation } =
+  academicManagementSemester;
