@@ -8,20 +8,8 @@ import { academicSemesterSchema } from "../../../schemas/academicManagement.sche
 import { monthOptions } from "../../../constants/global";
 import { useAddAcademicSemesterMutation } from "../../../redux/feature/admin/academicManagementSemester.api";
 import { toast } from "sonner";
-const nameOptions = [
-  {
-    value: "01",
-    label: "Autumn",
-  },
-  {
-    value: "02",
-    label: "Summer",
-  },
-  {
-    value: "03",
-    label: "Fall",
-  },
-];
+import { TResponse } from "../../../types/global";
+import { semesterOptions } from "../../../constants/semester";
 
 const currentYear = new Date().getFullYear();
 const yearOptions = [0, 1, 2, 3, 4].map((number) => ({
@@ -30,8 +18,9 @@ const yearOptions = [0, 1, 2, 3, 4].map((number) => ({
 }));
 export default function CreateAcademicSemester() {
   const [addAcademicSemester] = useAddAcademicSemesterMutation();
-  const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    const name = nameOptions[Number(data?.name) - 1]?.label;
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+    const toastId = toast.loading("Creating.....");
+    const name = semesterOptions[Number(data?.name) - 1]?.label;
     console.log(name);
 
     const semesterData = {
@@ -41,8 +30,17 @@ export default function CreateAcademicSemester() {
       startMonth: data.startMonth,
       endMonth: data.endMonth,
     };
-    addAcademicSemester(semesterData);
-    toast.success("Create Academic Semester Successfully");
+    try {
+      const res = (await addAcademicSemester(semesterData)) as TResponse;
+      console.log(res);
+      if (res.error) {
+        toast.error(res.error.data.message, { id: toastId });
+      } else {
+        toast.success("Semester created", { id: toastId });
+      }
+    } catch (err) {
+      toast.error("Something went wrong", { id: toastId });
+    }
   };
 
   return (
@@ -52,7 +50,7 @@ export default function CreateAcademicSemester() {
           onSubmit={onSubmit}
           resolver={zodResolver(academicSemesterSchema)}
         >
-          <PHSelect label="Name" name="name" options={nameOptions} />
+          <PHSelect label="Name" name="name" options={semesterOptions} />
           <PHSelect label="Year" name="year" options={yearOptions} />
           <PHSelect
             label="Start Month"
