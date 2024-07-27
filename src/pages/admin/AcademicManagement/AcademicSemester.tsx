@@ -1,6 +1,6 @@
 import { Table } from "antd";
 import type { TableColumnsType, TableProps } from "antd";
-import { useGetAllSemesterQuery } from "../../../redux/feature/admin/academicManagementSemester.api";
+import { useGetAllSemestersQuery } from "../../../redux/feature/admin/academicManagementSemester.api";
 
 interface DataType {
   key: React.Key;
@@ -10,7 +10,7 @@ interface DataType {
 }
 
 export default function AcademicSemester() {
-  const { data: semesterData } = useGetAllSemesterQuery(undefined);
+  const { data: semesterData } = useGetAllSemestersQuery(undefined);
   console.log(semesterData);
 
   const tableData = semesterData?.data?.map((item) => ({
