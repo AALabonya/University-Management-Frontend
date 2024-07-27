@@ -12,6 +12,15 @@ interface DataType {
 export default function AcademicSemester() {
   const { data: semesterData } = useGetAllSemesterQuery(undefined);
   console.log(semesterData);
+
+  const tableData = semesterData?.data?.map((item) => ({
+    _id: item._id,
+    name: item.name,
+    code: item.code,
+    year: item.year,
+    startMonth: item.startMonth,
+    endMonth: item.endMonth,
+  }));
   const columns: TableColumnsType<DataType> = [
     {
       title: "Name",
