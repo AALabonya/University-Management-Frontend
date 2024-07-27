@@ -25,53 +25,22 @@ export default function AcademicSemester() {
     {
       title: "Name",
       dataIndex: "name",
-      showSorterTooltip: { target: "full-header" },
-      filters: [
-        {
-          text: "Joe",
-          value: "Joe",
-        },
-        {
-          text: "Jim",
-          value: "Jim",
-        },
-        {
-          text: "Submenu",
-          value: "Submenu",
-          children: [
-            {
-              text: "Green",
-              value: "Green",
-            },
-            {
-              text: "Black",
-              value: "Black",
-            },
-          ],
-        },
-      ],
     },
     {
-      title: "Age",
-      dataIndex: "age",
-      defaultSortOrder: "descend",
-      sorter: (a, b) => a.age - b.age,
+      title: "Code",
+      dataIndex: "code",
     },
     {
-      title: "Address",
-      dataIndex: "address",
-      filters: [
-        {
-          text: "London",
-          value: "London",
-        },
-        {
-          text: "New York",
-          value: "New York",
-        },
-      ],
-      onFilter: (value, record) =>
-        record.address.indexOf(value as string) === 0,
+      title: "Year",
+      dataIndex: "year",
+    },
+    {
+      title: "startMonth",
+      dataIndex: "startMonth",
+    },
+    {
+      title: "endMonth",
+      dataIndex: "endMonth",
     },
   ];
 
