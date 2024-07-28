@@ -100,6 +100,9 @@ export default function AcademicSemester() {
       filters.name?.forEach((item) =>
         queryParams.push({ name: "name", value: item })
       );
+      filters.year?.forEach((item) =>
+        queryParams.push({ year: "year", value: item })
+      );
       console.log(queryParams);
     }
   };
