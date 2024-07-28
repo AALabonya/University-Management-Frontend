@@ -16,7 +16,11 @@ export type TTableData = Pick<
 >;
 export default function AcademicSemester() {
   const [params, setParams] = useState([]);
-  const { data: semesterData } = useGetAllSemestersQuery(params);
+  const {
+    data: semesterData,
+    isLoading,
+    isFetching,
+  } = useGetAllSemestersQuery(params);
   // console.log(semesterData);
 
   const tableData = semesterData?.data?.map((item) => ({
