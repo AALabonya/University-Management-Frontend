@@ -15,7 +15,7 @@ export type TTableData = Pick<
 >;
 export default function AcademicSemester() {
   const { data: semesterData } = useGetAllSemestersQuery(undefined);
-  console.log(semesterData);
+  // console.log(semesterData);
 
   const tableData = semesterData?.data?.map((item) => ({
     key: item._id,
