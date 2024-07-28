@@ -95,7 +95,13 @@ export default function AcademicSemester() {
     sorter,
     extra
   ) => {
-    console.log({ filters, extra });
+    if (extra.action === "filter") {
+      const queryParams = [];
+      filters.name?.forEach((item) =>
+        queryParams.push({ name: "name", value: item })
+      );
+      console.log(queryParams);
+    }
   };
   return (
     <Table
