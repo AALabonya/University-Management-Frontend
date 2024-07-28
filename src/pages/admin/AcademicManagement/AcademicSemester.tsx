@@ -11,19 +11,14 @@ import { TAcademicSemester } from "../../../types/academicManagement.type";
 // }
 export type TTableData = Pick<
   TAcademicSemester,
-  "name" | "year" | "startMonth" | "endMonth"
+  "_id" | "name" | "year" | "startMonth" | "endMonth"
 >;
 export default function AcademicSemester() {
-  const { data: semesterData } = useGetAllSemestersQuery([
-    {
-      name: "year",
-      value: "2024",
-    },
-  ]);
+  const { data: semesterData } = useGetAllSemestersQuery(undefined);
   console.log(semesterData);
 
   const tableData = semesterData?.data?.map((item) => ({
-    _id: item._id,
+    key: item._id,
     name: item.name,
     code: item.code,
     year: item.year,
@@ -98,7 +93,7 @@ export default function AcademicSemester() {
     sorter,
     extra
   ) => {
-    console.log("params", pagination, filters, sorter, extra);
+    console.log({ filters, extra });
   };
   return (
     <Table
