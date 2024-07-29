@@ -23,9 +23,11 @@ const userManagementApi = baseApi.injectEndpoints({
       query: (data) => ({
         url: "/users/create-student",
         method: "POST",
+        body: data,
       }),
     }),
   }),
 });
 
-export const { useGetAllStudentsQuery } = userManagementApi;
+export const { useAddStudentMutation, useGetAllStudentsQuery } =
+  userManagementApi;
