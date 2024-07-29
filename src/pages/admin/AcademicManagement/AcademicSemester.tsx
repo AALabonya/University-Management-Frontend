@@ -16,7 +16,7 @@ export type TTableData = Pick<
   "_id" | "name" | "year" | "startMonth" | "endMonth"
 >;
 export default function AcademicSemester() {
-  const [params, setParams] = useState([]);
+  const [params, setParams] = useState<TQueryParam[] | undefined>(undefined);
   const {
     data: semesterData,
     isLoading,
@@ -95,9 +95,9 @@ export default function AcademicSemester() {
   ];
 
   const onChange: TableProps<TTableData>["onChange"] = (
-    pagination,
+    _pagination,
     filters,
-    sorter,
+    _sorter,
     extra
   ) => {
     if (extra.action === "filter") {
