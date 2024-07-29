@@ -6,7 +6,7 @@ import { useGetAllSemestersQuery } from "../../redux/feature/admin/academicManag
 import PHForm from "../../components/form/PHForm";
 import PHInput from "../../components/form/PHInput";
 import PHSelect from "../../components/form/PHSelect";
-import { genderOptions } from "../../constants/global";
+import { bloodGroupOptions, genderOptions } from "../../constants/global";
 
 const studentDummyData = {
   password: "student123",
