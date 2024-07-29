@@ -1,6 +1,8 @@
 import { Controller, FieldValues, SubmitHandler } from "react-hook-form";
 
 import { Button, Col, Divider, Form, Input, Row } from "antd";
+import { useAddStudentMutation } from "../../redux/feature/admin/userManagement.api";
+import { useGetAllSemestersQuery } from "../../redux/feature/admin/academicManagementSemester.api";
 
 const studentDummyData = {
   password: "student123",
