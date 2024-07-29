@@ -7,6 +7,7 @@ import PHForm from "../../components/form/PHForm";
 import PHInput from "../../components/form/PHInput";
 import PHSelect from "../../components/form/PHSelect";
 import { bloodGroupOptions, genderOptions } from "../../constants/global";
+import PHDatePicker from "../../components/form/PHDatePicker";
 
 const studentDummyData = {
   password: "student123",
