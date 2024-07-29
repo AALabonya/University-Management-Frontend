@@ -5,6 +5,11 @@ const userManagementApi = baseApi.internalActions({
     getAllStudents: builder.query({
       query: (args) => {
         console.log(args);
+        return {
+          url: "/students",
+          method: "GET",
+          params: params,
+        };
       },
     }),
   }),
