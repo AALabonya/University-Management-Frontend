@@ -3,6 +3,7 @@ import type { TableColumnsType, TableProps } from "antd";
 import { useGetAllSemestersQuery } from "../../../redux/feature/admin/academicManagementSemester.api";
 import { TAcademicSemester } from "../../../types/academicManagement.type";
 import { useState } from "react";
+import { TQueryParam } from "../../../types";
 
 // interface DataType {
 //   key: React.Key;
@@ -100,7 +101,7 @@ export default function AcademicSemester() {
     extra
   ) => {
     if (extra.action === "filter") {
-      const queryParams = [];
+      const queryParams: TQueryParam[] = [];
       filters.name?.forEach((item) =>
         queryParams.push({ name: "name", value: item })
       );
@@ -110,8 +111,12 @@ export default function AcademicSemester() {
       setParams(queryParams);
     }
   };
+  if (isLoading) {
+    return <p>Loading.....</p>;
+  }
   return (
     <Table
+      loading={isFetching}
       columns={columns}
       dataSource={tableData}
       onChange={onChange}
