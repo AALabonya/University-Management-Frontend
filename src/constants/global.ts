@@ -13,6 +13,8 @@ export const monthNames = [
   "December",
 ];
 
+export const gender = ["Male", "Female", "Other"];
+
 export const monthOptions = monthNames.map((item) => ({
   value: item,
   label: item,
