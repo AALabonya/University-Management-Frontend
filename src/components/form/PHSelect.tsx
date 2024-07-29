@@ -2,18 +2,13 @@ import { Form, Select } from "antd";
 import { Controller } from "react-hook-form";
 
 type TPHSelectProps = {
-  name: string;
   label: string;
+  name: string;
   options: { value: string; label: string; disabled?: boolean }[] | undefined;
-  disabled: boolean;
+  disabled?: boolean;
 };
 
-export default function PHSelect({
-  name,
-  label,
-  options,
-  disabled,
-}: TPHSelectProps) {
+const PHSelect = ({ label, name, options, disabled }: TPHSelectProps) => {
   return (
     <Controller
       name={name}
@@ -26,9 +21,11 @@ export default function PHSelect({
             size="large"
             disabled={disabled}
           />
-          {error && <small style={{ color: "red" }}>{error?.message}</small>}
+          {error && <small style={{ color: "red" }}>{error.message}</small>}
         </Form.Item>
       )}
     />
   );
-}
+};
+
+export default PHSelect;
