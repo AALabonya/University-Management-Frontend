@@ -5,6 +5,7 @@ const userManagementApi = baseApi.internalActions({
     getAllStudents: builder.query({
       query: (args) => {
         console.log(args);
+        const params = new URLSearchParams();
         return {
           url: "/students",
           method: "GET",
