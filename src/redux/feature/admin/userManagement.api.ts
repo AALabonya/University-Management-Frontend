@@ -1,7 +1,7 @@
 import { TQueryParam } from "../../../types";
 import { baseApi } from "../../api/baseApi";
 
-const userManagementApi = baseApi.internalActions({
+const userManagementApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getAllStudents: builder.query({
       query: (args) => {
@@ -21,3 +21,5 @@ const userManagementApi = baseApi.internalActions({
     }),
   }),
 });
+
+export const { useGetAllStudentsQuery } = userManagementApi;
