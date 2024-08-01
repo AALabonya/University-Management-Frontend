@@ -1,16 +1,15 @@
 import { Controller, FieldValues, SubmitHandler } from "react-hook-form";
-
+import PHForm from "../../../components/form/PHForm";
+import PHInput from "../../../components/form/PHInput";
 import { Button, Col, Divider, Form, Input, Row } from "antd";
+import PHSelect from "../../../components/form/PHSelect";
+import { bloodGroupOptions, genderOptions } from "../../../constants/global";
+import PHDatePicker from "../../../components/form/PHDatePicker";
 import { useAddStudentMutation } from "../../../redux/feature/admin/userManagement.api";
 import {
   useGetAcademicDepartmentsQuery,
   useGetAllSemestersQuery,
 } from "../../../redux/feature/admin/academicManagementSemester.api";
-import PHForm from "../../../components/form/PHForm";
-import PHInput from "../../../components/form/PHInput";
-import PHSelect from "../../../components/form/PHSelect";
-import { bloodGroupOptions, genderOptions } from "../../../constants/global";
-import PHDatePicker from "../../../components/form/PHDatePicker";
 
 // const studentDummyData = {
 //   password: "student123",
@@ -55,28 +54,27 @@ import PHDatePicker from "../../../components/form/PHDatePicker";
 //! Should be removed
 const studentDefaultValues = {
   name: {
-    firstName: "I am ",
+    firstName: "Zina",
     middleName: "Student",
-    lastName: "Number 1",
+    lastName: "Number",
   },
   gender: "male",
 
-  bloogGroup: "A+",
+  bloodGroup: "A+",
 
   contactNo: "1235678",
   emergencyContactNo: "987-654-3210",
-  presentAddress: "123 Main St, Cityville",
+  presentAddress: "123 Main St, City ville",
   permanentAddress: "456 Oak St, Townsville",
 
   guardian: {
-    fatherName: "James Doe",
-    fatherOccupation: "Engineer",
-    fatherContactNo: "111-222-3333",
-    motherName: "Mary Doe",
+    fatherName: "Michael Smithh",
+    fatherOccupation: "Engineerr",
+    fatherContactNo: "+1234567890",
+    motherName: "Emily Smith",
     motherOccupation: "Teacher",
-    motherContactNo: "444-555-6666",
+    motherContactNo: "+1987654321",
   },
-
   localGuardian: {
     name: "Alice Johnson",
     occupation: "Doctor",
@@ -84,8 +82,8 @@ const studentDefaultValues = {
     address: "789 Pine St, Villageton",
   },
 
-  admissionSemester: "65bb60ebf71fdd1add63b1c0",
-  academicDepartment: "65b4acae3dc8d4f3ad83e416",
+  admissionSemester: "665a0fc976f227f803e77e97",
+  academicDepartment: "665bf43d68e71de06d3ec456",
 };
 
 const CreateStudent = () => {
