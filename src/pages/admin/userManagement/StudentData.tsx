@@ -1,41 +1,49 @@
-import { Button, Pagination, Space, Table } from "antd";
-import type { TableColumnsType, TableProps } from "antd";
-
+import {
+  Button,
+  Pagination,
+  Space,
+  Table,
+  TableColumnsType,
+  TableProps,
+} from "antd";
 import { useState } from "react";
 import { TQueryParam, TStudent } from "../../../types";
+
+import { Link } from "react-router-dom";
 import { useGetAllStudentsQuery } from "../../../redux/feature/admin/userManagement.api";
 
-// interface DataType {
-//   key: React.Key;
-//   name: string;
-//   age: number;
-//   address: string;
-// }
-export type TTableData = Pick<TStudent, "_id" | "fullName">;
+export type TTableData = Pick<
+  TStudent,
+  "fullName" | "id" | "email" | "contactNo"
+>;
 
-export default function StudentData() {
+const StudentData = () => {
   const [params, setParams] = useState<TQueryParam[]>([]);
-  const [page, setPage] = useState();
+  const [page, setPage] = useState(1);
   const {
     data: studentData,
     isLoading,
     isFetching,
   } = useGetAllStudentsQuery([
-    { name: "limit", value: 3 },
-    { name: "page", value: 2 },
+    { name: "page", value: page },
     { name: "sort", value: "id" },
     ...params,
   ]);
-  console.log(studentData);
+
+  console.log({ isLoading, isFetching });
 
   const metaData = studentData?.meta;
 
-  const tableData = studentData?.data?.map((item) => ({
-    key: item._id,
-    _id: item._id,
-    fullName: item.fullName,
-    id: item.id,
-  }));
+  const tableData = studentData?.data?.map(
+    ({ _id, fullName, id, email, contactNo }) => ({
+      key: _id,
+      fullName,
+      id,
+      email,
+      contactNo,
+    })
+  );
+
   const columns: TableColumnsType<TTableData> = [
     {
       title: "Name",
@@ -48,14 +56,26 @@ export default function StudentData() {
       key: "id",
       dataIndex: "id",
     },
-
+    {
+      title: "Email",
+      key: "email",
+      dataIndex: "email",
+    },
+    {
+      title: "Contact No.",
+      key: "contactNo",
+      dataIndex: "contactNo",
+    },
     {
       title: "Action",
       key: "x",
-      render: () => {
+      render: (item) => {
+        console.log(item);
         return (
           <Space>
-            <Button>Details</Button>
+            <Link to={`/admin/student-data/${item.key}`}>
+              <Button>Details</Button>
+            </Link>
             <Button>Update</Button>
             <Button>Block</Button>
           </Space>
@@ -73,21 +93,21 @@ export default function StudentData() {
   ) => {
     if (extra.action === "filter") {
       const queryParams: TQueryParam[] = [];
+
       filters.name?.forEach((item) =>
         queryParams.push({ name: "name", value: item })
       );
+
       filters.year?.forEach((item) =>
         queryParams.push({ name: "year", value: item })
       );
+
       setParams(queryParams);
     }
   };
-  if (isLoading) {
-    return <p>Loading.....</p>;
-  }
+
   return (
     <>
-      {" "}
       <Table
         loading={isFetching}
         columns={columns}
@@ -96,10 +116,13 @@ export default function StudentData() {
         pagination={false}
       />
       <Pagination
+        current={page}
         onChange={(value) => setPage(value)}
         pageSize={metaData?.limit}
         total={metaData?.total}
       />
     </>
   );
-}
+};
+
+export default StudentData;
