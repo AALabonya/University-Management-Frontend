@@ -7,11 +7,13 @@ const userManagementApi = baseApi.injectEndpoints({
       query: (args) => {
         console.log(args);
         const params = new URLSearchParams();
+
         if (args) {
           args.forEach((item: TQueryParam) => {
             params.append(item.name, item.value as string);
           });
         }
+
         return {
           url: "/students",
           method: "GET",

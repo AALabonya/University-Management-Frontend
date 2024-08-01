@@ -29,6 +29,7 @@ const StudentData = () => {
     { name: "sort", value: "id" },
     ...params,
   ]);
+  console.log("studentData", studentData);
 
   console.log({ isLoading, isFetching });
 
