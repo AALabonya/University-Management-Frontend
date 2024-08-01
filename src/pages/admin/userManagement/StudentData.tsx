@@ -86,7 +86,7 @@ export default function StudentData() {
       columns={columns}
       dataSource={tableData}
       onChange={onChange}
-      showSorterTooltip={{ target: "sorter-icon" }}
+      pagination={false}
     />
   );
 }
