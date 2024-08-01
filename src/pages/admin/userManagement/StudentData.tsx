@@ -1,4 +1,4 @@
-import { Button, Space, Table } from "antd";
+import { Button, Pagination, Space, Table } from "antd";
 import type { TableColumnsType, TableProps } from "antd";
 
 import { useState } from "react";
@@ -14,6 +14,7 @@ import { useGetAllStudentsQuery } from "../../../redux/feature/admin/userManagem
 export type TTableData = Pick<TStudent, "_id" | "fullName">;
 export default function StudentData() {
   const [params, setParams] = useState<TQueryParam[]>([]);
+  const [page, setPage] = useState();
   const {
     data: studentData,
     isLoading,
@@ -81,12 +82,20 @@ export default function StudentData() {
     return <p>Loading.....</p>;
   }
   return (
-    <Table
-      loading={isFetching}
-      columns={columns}
-      dataSource={tableData}
-      onChange={onChange}
-      pagination={false}
-    />
+    <>
+      {" "}
+      <Table
+        loading={isFetching}
+        columns={columns}
+        dataSource={tableData}
+        onChange={onChange}
+        pagination={false}
+      />
+      <Pagination
+        onChange={(page) => setPage(page)}
+        pageSize={metaData?.limit}
+        total={metaData?.total}
+      />
+    </>
   );
 }
