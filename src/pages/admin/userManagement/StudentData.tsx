@@ -92,7 +92,7 @@ export default function StudentData() {
         pagination={false}
       />
       <Pagination
-        onChange={(page) => setPage(page)}
+        onChange={(value) => setPage(value)}
         pageSize={metaData?.limit}
         total={metaData?.total}
       />
