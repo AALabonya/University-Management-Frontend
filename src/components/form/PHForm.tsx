@@ -32,7 +32,7 @@ export default function PHForm({
   }
   const methods = useForm(formConfig);
 
-  const submit = (data) => {
+  const submit = (data: any) => {
     onSubmit(data);
     methods.reset();
   };
