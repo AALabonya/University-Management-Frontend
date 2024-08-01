@@ -98,6 +98,7 @@ const CreateStudent = () => {
 
   const { data: dData, isLoading: dIsLoading } =
     useGetAcademicDepartmentsQuery(undefined);
+  console.log("AcademicDepartments", dData);
 
   const semesterOptions = sData?.data?.map((item) => ({
     value: item._id,

@@ -60,7 +60,7 @@ const academicManagementApi = baseApi.injectEndpoints({
     }),
     getAcademicDepartments: builder.query({
       query: () => {
-        return { url: "/academic-departments", method: "GET" };
+        return { url: "/academic-department", method: "GET" };
       },
       transformResponse: (response: TResponseRedux<TAcademicDepartment[]>) => {
         return {
@@ -71,7 +71,7 @@ const academicManagementApi = baseApi.injectEndpoints({
     }),
     addAcademicDepartment: builder.mutation({
       query: (data) => ({
-        url: "/academic-departments/create-academic-department",
+        url: "/academic-department/create-academic-department",
         method: "POST",
         body: data,
       }),
