@@ -11,7 +11,7 @@ import { useGetAllStudentsQuery } from "../../../redux/feature/admin/userManagem
 //   age: number;
 //   address: string;
 // }
-export type TTableData = Pick<TStudent, "_id" | "name">;
+export type TTableData = Pick<TStudent, "_id" | "fullName">;
 export default function StudentData() {
   const [params, setParams] = useState<TQueryParam[] | undefined>(undefined);
   const {
@@ -23,14 +23,14 @@ export default function StudentData() {
 
   const tableData = studentData?.data?.map((item) => ({
     key: item._id,
-    name: item.name,
+    name: item.fullName,
     id: item.id,
   }));
   const columns: TableColumnsType<TTableData> = [
     {
       title: "Name",
-      key: "name",
-      dataIndex: "name",
+      key: "fullName",
+      dataIndex: "fullName",
     },
 
     {
