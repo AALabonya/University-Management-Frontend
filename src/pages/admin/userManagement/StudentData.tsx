@@ -1,4 +1,4 @@
-import { Button, Table } from "antd";
+import { Button, Space, Table } from "antd";
 import type { TableColumnsType, TableProps } from "antd";
 
 import { useState } from "react";
@@ -44,13 +44,14 @@ export default function StudentData() {
       key: "x",
       render: () => {
         return (
-          <div>
+          <Space>
             <Button>Details</Button>
             <Button>Update</Button>
             <Button>Block</Button>
-          </div>
+          </Space>
         );
       },
+      width: "1%",
     },
   ];
 
