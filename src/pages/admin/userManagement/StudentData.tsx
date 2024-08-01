@@ -1,8 +1,8 @@
 import { Button, Table } from "antd";
 import type { TableColumnsType, TableProps } from "antd";
-import { TAcademicSemester } from "../../../types/academicManagement.type";
+
 import { useState } from "react";
-import { TQueryParam } from "../../../types";
+import { TQueryParam, TStudent } from "../../../types";
 import { useGetAllStudentsQuery } from "../../../redux/feature/admin/userManagement.api";
 
 // interface DataType {
@@ -11,10 +11,7 @@ import { useGetAllStudentsQuery } from "../../../redux/feature/admin/userManagem
 //   age: number;
 //   address: string;
 // }
-export type TTableData = Pick<
-  TAcademicSemester,
-  "_id" | "name" | "year" | "startMonth" | "endMonth"
->;
+export type TTableData = Pick<TStudent, "_id" | "name">;
 export default function StudentData() {
   const [params, setParams] = useState<TQueryParam[] | undefined>(undefined);
   const {
