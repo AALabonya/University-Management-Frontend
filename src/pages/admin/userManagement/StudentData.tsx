@@ -15,13 +15,13 @@ export type TTableData = Pick<TStudent, "_id" | "name">;
 export default function StudentData() {
   const [params, setParams] = useState<TQueryParam[] | undefined>(undefined);
   const {
-    data: semesterData,
+    data: studentData,
     isLoading,
     isFetching,
   } = useGetAllStudentsQuery(params);
-  // console.log(semesterData);
+  console.log(studentData);
 
-  const tableData = semesterData?.data?.map((item) => ({
+  const tableData = studentData?.data?.map((item) => ({
     key: item._id,
     name: item.name,
     id: item.id,
