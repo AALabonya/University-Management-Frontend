@@ -87,7 +87,9 @@ export default function StudentData() {
       render: () => {
         return (
           <div>
+            <Button>Details</Button>
             <Button>Update</Button>
+            <Button>Block</Button>
           </div>
         );
       },
