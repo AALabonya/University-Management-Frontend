@@ -26,6 +26,7 @@ export default function AcademicSemester() {
 
   const tableData = semesterData?.data?.map((item) => ({
     key: item._id,
+    _id: item._id,
     name: item.name,
     code: item.code,
     year: item.year,
