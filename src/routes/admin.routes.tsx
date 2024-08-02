@@ -8,7 +8,9 @@ import AdminDashboard from "../pages/admin/AdminDashboard";
 import CreateAdmin from "../pages/admin/CreateAdmin";
 import CreateFaculty from "../pages/admin/CreateFaculty";
 import CreateStudent from "../pages/admin/userManagement/CreateStudent";
+
 import StudentData from "../pages/admin/userManagement/StudentData";
+import StudentDetails from "../pages/admin/userManagement/StudentDetails";
 
 export const adminPaths = [
   {
@@ -61,8 +63,12 @@ export const adminPaths = [
       },
       {
         name: "Students",
-        path: "students",
+        path: "students-data",
         element: <StudentData />,
+      },
+      {
+        path: "student-data/:studentId",
+        element: <StudentDetails />,
       },
       {
         name: "Create Admin",
@@ -73,6 +79,12 @@ export const adminPaths = [
         name: "Create Faculty",
         path: "create-faculty",
         element: <CreateFaculty />,
+      },
+
+      {
+        name: "Create Member",
+        path: "create-member",
+        element: <CreateStudent />,
       },
     ],
   },
@@ -97,27 +109,33 @@ export const adminPaths = [
 //         })),
 //       });
 //     }
+
 //     return acc;
 //   },
 //   []
 // );
 
-//Programaticaly way
+//* Programatical way
 
 // export const adminRoutes = adminPaths.reduce((acc: TRoute[], item) => {
-//     if (item.path && item.element) {
+//   if (item.path && item.element) {
+//     acc.push({
+//       path: item.path,
+//       element: item.element,
+//     });
+//   }
+
+//   if (item.children) {
+//     item.children.forEach((child) => {
 //       acc.push({
-//         path: item.path,
-//         element: item.element,
+//         path: child.path,
+//         element: child.element,
 //       });
-//     }
-//     if (item.children) {
-//       item.children.forEach((child) => {
-//         acc.push({ path: child.path, element: child.element });
-//       });
-//     }
-//     return acc;
-//   }, []);
+//     });
+//   }
+
+//   return acc;
+// }, []);
 
 //! Hard coded way
 
