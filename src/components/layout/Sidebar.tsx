@@ -1,11 +1,11 @@
-import { Menu, Layout } from "antd";
-import sidebarItemsGenerator from "../../utils/sidebarItemsGenerator";
-
-import { useAppSelector } from "../../redux/hooks";
-import { selectCurrentUser } from "../../redux/feature/auth/authSlice";
+import { Layout, Menu } from "antd";
+import { sidebarItemsGenerator } from "../../utils/sidebarItemsGenerator";
+import { adminPaths } from "../../routes/admin.routes";
 import { facultyPaths } from "../../routes/faculty.routes";
 import { studentPaths } from "../../routes/student.routes";
-import { adminPaths } from "../../routes/admin.routes";
+import { useAppSelector } from "../../redux/hooks";
+import { selectCurrentUser } from "../../redux/feature/auth/authSlice";
+
 const { Sider } = Layout;
 
 const userRole = {
@@ -13,7 +13,8 @@ const userRole = {
   FACULTY: "faculty",
   STUDENT: "student",
 };
-export default function Sidebar() {
+
+const Sidebar = () => {
   const user = useAppSelector(selectCurrentUser);
 
   let sidebarItems;
@@ -58,4 +59,6 @@ export default function Sidebar() {
       />
     </Sider>
   );
-}
+};
+
+export default Sidebar;
