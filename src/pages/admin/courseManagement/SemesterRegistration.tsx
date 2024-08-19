@@ -10,8 +10,12 @@ import { monthOptions } from "../../../constants/global";
 import { toast } from "sonner";
 import { TResponse } from "../../../types/global";
 import { semesterOptions } from "../../../constants/semester";
+import { useGetAllSemestersQuery } from "../../../redux/feature/admin/academicManagementSemester.api";
 
 export default function SemesterRegistration() {
+  const { data: academicSemester } = useGetAllSemestersQuery(undefined);
+  console.log(academicSemester);
+
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const toastId = toast.loading("Creating.....");
     const name = semesterOptions[Number(data?.name) - 1]?.label;
