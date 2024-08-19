@@ -17,7 +17,7 @@ import PHInput from "../../../components/form/PHInput";
 import { TResponse } from "../../../types";
 
 export default function SemesterRegistration() {
-  const [addSemester] = useAddAcademicSemesterMutation;
+  const [addSemester] = useAddAcademicSemesterMutation();
   const { data: academicSemester } = useGetAllSemestersQuery([
     { name: "sort", value: "year" },
   ]);
