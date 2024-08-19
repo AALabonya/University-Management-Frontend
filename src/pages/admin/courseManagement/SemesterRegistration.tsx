@@ -11,11 +11,6 @@ import { toast } from "sonner";
 import { TResponse } from "../../../types/global";
 import { semesterOptions } from "../../../constants/semester";
 
-const currentYear = new Date().getFullYear();
-const yearOptions = [0, 1, 2, 3, 4].map((number) => ({
-  value: String(currentYear + number),
-  label: String(currentYear + number),
-}));
 export default function SemesterRegistration() {
   const [addAcademicSemester] = useAddAcademicSemesterMutation();
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
