@@ -13,9 +13,15 @@ import { semesterOptions } from "../../../constants/semester";
 import { useGetAllSemestersQuery } from "../../../redux/feature/admin/academicManagementSemester.api";
 
 export default function SemesterRegistration() {
-  const { data: academicSemester } = useGetAllSemestersQuery(undefined);
+  const { data: academicSemester } = useGetAllSemestersQuery([
+    { name: "sort", value: "year" },
+  ]);
   console.log(academicSemester);
 
+  const academicSemesterOptions = academicSemester?.data?.map((item) => ({
+    value: item._id,
+    label: `${item.name} ${item.year}`,
+  }));
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     const toastId = toast.loading("Creating.....");
     const name = semesterOptions[Number(data?.name) - 1]?.label;
@@ -44,17 +50,14 @@ export default function SemesterRegistration() {
   return (
     <Flex justify="center" align="center">
       <Col span={6}>
-        <PHForm
-          onSubmit={onSubmit}
-          resolver={zodResolver(academicSemesterSchema)}
-        >
-          <PHSelect label="Name" name="name" options={semesterOptions} />
-
+        <PHForm onSubmit={onSubmit}>
           <PHSelect
-            label="Start Month"
-            name="startMonth"
-            options={monthOptions}
+            label="Name"
+            name="name"
+            options={academicSemesterOptions}
           />
+
+          <PHSelect label="Start Month" name="startMonth" options={se} />
           <PHSelect label="End Month" name="endMonth" options={monthOptions} />
           <Button htmlType="submit">Submit</Button>
         </PHForm>
