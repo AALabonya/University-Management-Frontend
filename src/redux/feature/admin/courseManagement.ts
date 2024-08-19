@@ -25,12 +25,13 @@ const courseManagementApi = baseApi.injectEndpoints({
     //     };
     //   },
     // }),
-    addAcademicSemester: builder.mutation({
+    addRegisteredSemester: builder.mutation({
       query: (data) => ({
-        url: "/academic-semesters/create-academic-semester",
+        url: "/semester-registration/create-semester-registration",
         method: "POST",
         body: data,
       }),
     }),
   }),
 });
+export const { useAddRegisteredSemesterMutation } = courseManagementApi;
