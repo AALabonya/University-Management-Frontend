@@ -9,7 +9,10 @@ import { monthOptions } from "../../../constants/global";
 
 import { toast } from "sonner";
 import { TResponse } from "../../../types/global";
-import { semesterOptions } from "../../../constants/semester";
+import {
+  semesterOptions,
+  semesterStatusOptions,
+} from "../../../constants/semester";
 import { useGetAllSemestersQuery } from "../../../redux/feature/admin/academicManagementSemester.api";
 
 export default function SemesterRegistration() {
@@ -52,11 +55,15 @@ export default function SemesterRegistration() {
       <Col span={6}>
         <PHForm onSubmit={onSubmit}>
           <PHSelect
-            label="Name"
-            name="name"
+            label="Academic Semester"
+            name="academicSemester"
             options={academicSemesterOptions}
           />
-
+          <PHSelect
+            name="status"
+            label="Status"
+            options={semesterStatusOptions}
+          />
           <PHSelect label="Start Month" name="startMonth" options={se} />
           <PHSelect label="End Month" name="endMonth" options={monthOptions} />
           <Button htmlType="submit">Submit</Button>
